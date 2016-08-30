@@ -1,0 +1,11 @@
+{
+  "name": "trusted-ca",
+  "version": "0.0.1",
+  "description": "Include ca-bundle into globalAgent.",
+  "main": "index.js",
+  "author": "Dan Clayton<dan@azwebmaster.com>",
+  "license": "ISC",
+  "dependencies": {
+    "split-ca": "^1.0.1"
+  }
+}
