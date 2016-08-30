@@ -9,9 +9,9 @@ var trustedCa = [
 https.globalAgent.options.ca = [];
 for (var i = 0; i < trustedCa.length; i++) {
   if(fs.existsSync(trustedCa[i])){
-    var caList = splitCa(fs.readFileSync(trustedCa[i]));
-    for (var i = 0; i < caList.length; i++) {
-      https.globalAgent.options.ca.push(caList[i]);
+    var caList = splitCa(trustedCa[i]);
+    for (var j = 0; j < caList.length; j++) {
+      https.globalAgent.options.ca.push(caList[j]);
     }
   }
 }

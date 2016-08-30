@@ -1,6 +1,6 @@
 {
   "name": "trusted-ca",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Include ca-bundle into globalAgent.",
   "main": "index.js",
   "author": "Dan Clayton<dan@azwebmaster.com>",
