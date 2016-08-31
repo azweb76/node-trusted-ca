@@ -1,6 +1,6 @@
 {
   "name": "trusted-ca",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Nodejs package for loading the system ca-bundle trust certificates into the https globalAgent.",
   "main": "index.js",
   "author": "Dan Clayton<dan@azwebmaster.com>",
@@ -11,8 +11,5 @@
   "scripts": {
     "test": "node test/integration/test_google.js"
   },
-  "license": "ISC",
-  "dependencies": {
-    "split-ca": "^1.0.1"
-  }
+  "license": "ISC"
 }

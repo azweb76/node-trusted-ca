@@ -3,8 +3,11 @@ Nodejs package for loading the system ca-bundle trust certificates into the http
 
 Certificates loaded:
 * /etc/pki/tls/certs/ca-bundle.crt
+* /etc/ssl/certs/ca-certificates.crt
+* /usr/local/etc/openssl/cert.pem
+* OSX key chains (System, SystemRootCertificates, requires node v0.11.12+)
 
-> NOTE: If the ca-bundle is not found, this falls back to nodejs defaults.
+> NOTE: If no certs are found, this falls back to nodejs defaults.
 
 ## Install
 ```javascript
