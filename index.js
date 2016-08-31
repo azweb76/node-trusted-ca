@@ -25,7 +25,8 @@ if(process.platform === 'darwin'){
 else {
   for (var i = 0; i < trustedCa.length; i++) {
     if(fs.existsSync(trustedCa[i])){
-      var caList = splitCa(trustedCa[i]);
+      var caInfo = fs.readFileSync(trustedCa[i], { encoding: 'utf8'} );
+      var caList = splitCa(caInfo);
       for (var j = 0; j < caList.length; j++) {
         caAll.push(caList[j]);
       }

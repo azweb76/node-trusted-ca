@@ -1,6 +1,6 @@
 {
   "name": "trusted-ca",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nodejs package for loading the system ca-bundle trust certificates into the https globalAgent.",
   "main": "index.js",
   "author": "Dan Clayton<dan@azwebmaster.com>",
