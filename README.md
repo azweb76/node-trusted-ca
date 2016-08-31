@@ -4,6 +4,8 @@ Nodejs package for loading the system ca-bundle trust certificates into the http
 Certificates loaded:
 * /etc/pki/tls/certs/ca-bundle.crt
 
+> NOTE: If the ca-bundle is not found, this falls back to nodejs defaults.
+
 ## Install
 ```javascript
 npm install trusted-ca --save
@@ -24,13 +26,14 @@ const options = {
 };
 
 const req = https.request(options, res => {
+  res.setEncoding('utf8');
   res.on('data', d => {
     console.log('data', d);
-  })
+  });
 });
 
 req.on('error', err => {
   console.log('rats, an error!', err);
-})
+});
 
 req.end();

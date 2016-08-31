@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/azweb76/node-trusted-ca.git"
   },
+  "scripts": {
+    "test": "node test/integration/test_google.js"
+  },
   "license": "ISC",
   "dependencies": {
     "split-ca": "^1.0.1"
