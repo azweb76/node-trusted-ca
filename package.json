@@ -1,9 +1,13 @@
 {
   "name": "trusted-ca",
-  "version": "0.0.2",
-  "description": "Include ca-bundle into globalAgent.",
+  "version": "0.0.3",
+  "description": "Nodejs package for loading the system ca-bundle trust certificates into the https globalAgent.",
   "main": "index.js",
   "author": "Dan Clayton<dan@azwebmaster.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azweb76/node-trusted-ca.git"
+  },
   "license": "ISC",
   "dependencies": {
     "split-ca": "^1.0.1"
