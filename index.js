@@ -10,27 +10,38 @@ var trustedCa = [
   '/usr/local/etc/openssl/cert.pem'
 ];
 
-var caAll = https.globalAgent.options.ca || [];
+var caAll = https.globalAgent.options.ca = https.globalAgent.options.ca || [];
+var tools = module.exports = {
+  add: function (file) {
+    var cas = loadFile(file);
+    // only replace ca certs if we found certs
+    if (cas && cas.length){
+      caAll.push.apply(caAll, cas);
+    }
+    return tools;
+  }
+};
 
 // if OSX, load certs from key chains
 if(process.platform === 'darwin'){
   if (child_process.execSync){
     var caList = splitCa(child_process.execSync('security find-certificate -a -p /Library/Keychains/System.keychain', { encoding: 'utf8' }));
-    caAll = caAll.concat(caList);
+    caAll.push.apply(caAll, caList);
 
     caList = splitCa(child_process.execSync('security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates.keychain', { encoding: 'utf8' }));
-    caAll = caAll.concat(caList);
+    caAll.push.apply(caAll, caList);
   }
 }
 else {
-  for (var i = 0; i < trustedCa.length; i++) {
-    if(fs.existsSync(trustedCa[i])){
-      var caInfo = fs.readFileSync(trustedCa[i], { encoding: 'utf8'} );
-      var caList = splitCa(caInfo);
-      for (var j = 0; j < caList.length; j++) {
-        caAll.push(caList[j]);
-      }
-    }
+  trustedCa.forEach(function (file) {
+    tools.add(file);
+  })
+}
+
+function loadFile(file) {
+  if(fs.existsSync(file)){
+    var caInfo = fs.readFileSync(file, { encoding: 'utf8'} );
+    return splitCa(caInfo);
   }
 }
 
@@ -58,7 +69,4 @@ function splitCa(chain, split) {
   return ca;
 }
 
-// only replace ca certs if we found certs
-if (caAll && caAll.length){
-  https.globalAgent.options.ca = caAll;
-}
+
